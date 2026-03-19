@@ -7,7 +7,7 @@
 - IAM user ko role assume करने की permission dena
 - Switch Role करके admin access verify करना
 
----
+--
 
 ## 1) Root Account se IAM User Create kiya
 **Kyun?**  
