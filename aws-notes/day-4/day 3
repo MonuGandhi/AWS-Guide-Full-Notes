@@ -1,0 +1,93 @@
+# Day‑3 (AWS IAM Setup) – Detailed Notes (Hinglish)
+
+## ✅ Objective (Day‑3 ka goal)
+- Root account ko daily use se hatana
+- IAM User create karke safe login karna
+- Admin Role banana
+- IAM user ko role assume करने की permission dena
+- Switch Role करके admin access verify करना
+
+---
+
+## 1) Root Account se IAM User Create kiya
+**Kyun?**  
+Root account ko daily use करना unsafe hota hai. Isliye IAM user banana best practice hai.
+
+**Steps:**  
+1. IAM → Users → Create User  
+2. Username: `monugandhi`  
+3. Console access: ON  
+4. Password set kiya  
+5. User create
+
+---
+
+## 2) IAM User ko Inline Policy di (AssumeRole)
+**Kyun?**  
+IAM user ko admin access directly नहीं देते; हम role assume करवाते हैं (temporary access).
+
+**Policy JSON:**
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "sts:AssumeRole",
+      "Resource": "arn:aws:iam::105673693222:role/adminmonu"
+    }
+  ]
+}
+```
+
+**Steps:**  
+IAM → Users → `monugandhi` → Add permissions → Create inline policy → JSON paste → Name: `AssumeAdminRole`
+
+---
+
+## 3) Admin Role Create kiya
+**Role name:** `adminmonu`  
+**Kyun?**  
+Role ke through temporary admin privileges milti hai (safe + traceable).
+
+Role me **AdministratorAccess** policy attach ki.
+
+---
+
+## 4) Switch Role (Console se)
+**Kyun?**  
+Role use karke temporary admin access लेना.
+
+**Steps:**  
+1. IAM user se login  
+2. Top‑right → Switch Role  
+3. Account ID: `105673693222`  
+4. Role name: `adminmonu`  
+5. Switch Role
+
+---
+
+## 5) Verify ki role kaam kar raha hai
+**Verify Methods:**  
+✅ Top‑right role name दिखा  
+✅ IAM console open hua (AccessDenied error नहीं आया)
+
+CLI se verify ka option tha, but CLI me credentials configure नहीं थे इसलिए error आया (NoCredentials).
+
+---
+
+## ✅ Day‑3 Conclusion
+- Root account se daily use बंद  
+- IAM user बना (safe login)  
+- Role बनाया (temporary admin access)  
+- AssumeRole permissions दी  
+- Switch Role करके verify किया  
+
+➡️ **Day‑3 complete**
+
+---
+
+## Next Day (Day‑4 preview)
+- MFA enable  
+- Least privilege policies  
+- Access keys security  
