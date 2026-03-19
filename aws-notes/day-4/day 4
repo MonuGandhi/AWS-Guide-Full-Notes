@@ -5,7 +5,7 @@
 - 2 tiny policies लिखना (S3 read‑only + dangerous action deny)  
 - Notes repo में save करना  
 
----
+--
 
 ## 1) IAM Policy ka basic structure
 IAM policy एक JSON document होता है. Structure:
