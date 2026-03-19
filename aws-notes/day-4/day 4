@@ -15,7 +15,7 @@ IAM policy एक JSON document होता है. Structure:
 
 Statement में main rules आते हैं. Order matter नहीं करता.
 
---
+-
 
 ## 2) Core Policy Elements
 
