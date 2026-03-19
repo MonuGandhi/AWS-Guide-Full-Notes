@@ -1,0 +1,105 @@
+Day 1 — AWS CLI Setup (Full Detailed Report)
+Date: 2026-03-14  
+Learner: MonuGandhi
+---
+✅ 0) Preparation / Goal
+आज का goal था:
+AWS account बनाना
+Free Tier charges से बचने के लिए alerts ON करना
+IAM user (non‑admin) बनाना
+Access Keys बनाना
+AWS CLI install + configure करना
+Required outputs (screenshots + logs) लेना
+---
+✅ 1) AWS Account बनाया
+Browser खोला
+AWS signup page पर गया
+Email + password से account बनाया
+Payment method verify किया (card)
+Phone verification किया
+Free plan select किया
+---
+✅ 2) Free Tier Usage Alerts ON किए
+AWS Console login किया
+Billing Console खोला
+Left menu → Billing preferences
+Receive AWS Free Tier usage alerts tick किया
+Update दबाया
+---
+✅ 3) Zero‑Spend Budget बनाया
+Billing Console → Budgets
+Create budget
+Budget type: Cost budget
+Name: `Zero-Spend-Alert`
+Period: Monthly
+Budget amount: 0
+Alert set: Actual cost >= 0.01
+Email notification डाला
+Create budget किया
+---
+✅ 4) Notes Folder बनाए
+Folders created:
+IAM
+Networking
+Logging
+Data
+Compute
+IaC
+IR
+(Windows PowerShell command used):
+```powershell
+mkdir "IAM","Networking","Logging","Data","Compute","IaC","IR"
+```
+---
+✅ 5) AWS CLI Install किया
+AWS CLI installer download किया
+Install run किया
+Verify किया:
+```cmd
+aws --version
+```  
+Output का screenshot लिया
+---
+✅ 6) IAM Non‑Admin User बनाया
+AWS Console → Search IAM
+Left menu → Users
+Create user
+Username रखा: `student`
+Next
+Attach policies directly
+Policy select की: ReadOnlyAccess
+Create user किया
+---
+✅ 7) Access Keys बनाईं
+User `student` open किया
+Security credentials tab
+Access keys → Create access key
+Use case: Command Line Interface (CLI)
+Create access key
+.csv download किया
+Access Key ID + Secret Key सुरक्षित रखा
+---
+✅ 8) AWS CLI Configure किया
+Command run:
+```cmd
+aws configure --profile student
+```
+Values entered:
+AWS Access Key ID
+AWS Secret Access Key
+Default region: ap-south-1 (या us-east-1)
+Output format: json
+---
+✅ 9) Configuration Verify किया
+Command run:
+```cmd
+aws configure list --profile student
+```
+Output को notes में paste किया
+---
+✅ Required Outputs (Completed)
+Screenshot of `aws --version`
+Output of `aws configure list --profile student` saved
+---
+✅ Day‑1 Status
+COMPLETED
